@@ -1,7 +1,7 @@
 -- New example script written by wally
 -- You can suggest changes with a pull request or something
 
-local repo = 'https://raw.githubusercontent.com/xbogdan09/lib/main/yz'
+local repo = 'https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/'
 
 local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
 local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
@@ -13,7 +13,7 @@ local Window = Library:CreateWindow({
     -- Position and Size are also valid options here
     -- but you do not need to define them unless you are changing them :)
 
-    Title = 'Yeazus.xyz',
+    Title = 'Example menu',
     Center = true,
     AutoShow = true,
     TabPadding = 8,
@@ -28,7 +28,9 @@ local Window = Library:CreateWindow({
 -- You do not have to set your tabs & groups up this way, just a prefrence.
 local Tabs = {
     -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'),
+    Main = Window:AddTab('AimBot'),
+    Main1 = Window:AddTab('Visual'),
+    Main2 = Window:AddTab('World'),
     ['UI Settings'] = Window:AddTab('UI Settings'),
 }
 
@@ -37,7 +39,7 @@ local Tabs = {
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
 
 -- We can also get our Main tab via the following code:
--- local LeftGroupBox = Window.Tabs.Main:AddLeftGroupbox('Groupbox')
+-- local LeftGroupBox = Window.Tabs.Main:AddLeftGroupbox('Aim')
 
 -- Tabboxes are a tiny bit different, but here's a basic example:
 --[[
@@ -53,9 +55,45 @@ local Tab2 = TabBox:AddTab('Tab 2')
 -- Groupbox:AddToggle
 -- Arguments: Index, Options
 LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'This is a toggle',
-    Default = true, -- Default value (true / false)
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
+    Text = 'Check Visible',
+    Default = false, -- Default value (true / false)
+    Tooltip = '', -- Information shown when you hover over the toggle
+
+    Callback = function(Value)
+        print('[cb] MyToggle changed to:', Value)
+    end
+})
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'Drow FOV',
+    Default = false, -- Default value (true / false)
+    Tooltip = '', -- Information shown when you hover over the toggle
+
+    Callback = function(Value)
+        print('[cb] MyToggle changed to:', Value)
+    end
+})
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'AimAlwaysActivated',
+    Default = false, -- Default value (true / false)
+    Tooltip = '', -- Information shown when you hover over the toggle
+
+    Callback = function(Value)
+        print('[cb] MyToggle changed to:', Value)
+    end
+})
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'Wallbang',
+    Default = false, -- Default value (true / false)
+    Tooltip = '', -- Information shown when you hover over the toggle
+
+    Callback = function(Value)
+        print('[cb] MyToggle changed to:', Value)
+    end
+})
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'AimTracer',
+    Default = false, -- Default value (true / false)
+    Tooltip = '', -- Information shown when you hover over the toggle
 
     Callback = function(Value)
         print('[cb] MyToggle changed to:', Value)
@@ -95,7 +133,7 @@ Toggles.MyToggle:SetValue(false)
     You can call :AddButton on a button to add a SubButton!
 ]]
 
-local MyButton = LeftGroupBox:AddButton({
+--[[local MyButton = LeftGroupBox:AddButton({
     Text = 'Button',
     Func = function()
         print('You clicked a button!')
@@ -112,7 +150,7 @@ local MyButton2 = MyButton:AddButton({
     DoubleClick = true, -- You will have to click this button twice to trigger the callback
     Tooltip = 'This is the sub button (double click me!)'
 })
-
+]]
 --[[
     NOTE: You can chain the button methods!
     EXAMPLE:
